@@ -1,16 +1,20 @@
-# This is a sample Python script.
+import imaplib
+import email
+from email.header import decode_header
+import webbrowser
+import os
+import settings
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#TODO Type username and password
+username = settings.username
+password = settings.password
 
+def clean(text):
+    # чистый текст для создания папки
+    return "".join(c if c.isalnum() else "_" for c in text)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+imap = imaplib.IMAP4_SSL(settings.imap) # <- Imap server, example imap.gmail.com
+imap.login(username, password)
 
+status, messages = imap.select("INBOX")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

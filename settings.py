@@ -1,0 +1,6 @@
+username = ""
+password = ""
+imap = ""
+imap_port = ""
+smtp = ""
+smtp_port = ""
