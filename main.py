@@ -13,8 +13,9 @@ def clean(text):
     # чистый текст для создания папки
     return "".join(c if c.isalnum() else "_" for c in text)
 
-imap = imaplib.IMAP4_SSL(settings.imap) # <- Imap server, example imap.gmail.com
+imap = imaplib.IMAP4_SSL(settings.imap)
 imap.login(username, password)
 
 status, messages = imap.select("INBOX")
 
+print(status)
